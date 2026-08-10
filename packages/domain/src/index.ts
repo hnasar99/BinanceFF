@@ -85,6 +85,35 @@ export interface ProofOfOutcome {
   mockExecution: boolean;
 }
 
+export type EconomyEventType =
+  | 'intent.created'
+  | 'intent.decomposed'
+  | 'capability.required'
+  | 'agent.discovered'
+  | 'agent.assigned'
+  | 'organization.formed'
+  | 'job.created'
+  | 'job.started'
+  | 'job.completed'
+  | 'job.failed'
+  | 'evidence.attached'
+  | 'evaluation.started'
+  | 'evaluation.rejected'
+  | 'evaluation.completed'
+  | 'outcome.verified'
+  | 'organization.dissolved';
+
+export interface EconomyEvent<TPayload = Record<string, unknown>> {
+  id: string;
+  type: EconomyEventType;
+  timestamp: number;
+  intentId: string;
+  actorId?: string;
+  jobId?: string;
+  mock: boolean;
+  payload: TPayload;
+}
+
 export interface AgentRuntime {
   identity: AgentIdentity;
   execute(capability: Capability, intent: Intent): Promise<AgentResult>;
