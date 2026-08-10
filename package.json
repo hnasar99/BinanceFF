@@ -1,0 +1,16 @@
+{
+  "name": "binanceff",
+  "private": true,
+  "packageManager": "pnpm@10.14.0",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "demo": "tsx apps/api/src/demo.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}
