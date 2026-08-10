@@ -1,5 +1,6 @@
 import { researchAgent, riskAgent, evaluatorAgent } from '../../../agents/mock-agents/src/index.js';
-import type { EconomyEvent, Intent } from '../../../packages/domain/src/index.js';
+import type { Intent } from '../../../packages/domain/src/index.js';
+import type { EconomyEvent } from '../../../packages/events/src/index.js';
 import { executeIntent } from '../../../packages/orchestrator/src/index.js';
 
 const intent: Intent = {
