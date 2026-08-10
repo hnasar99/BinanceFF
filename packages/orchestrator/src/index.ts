@@ -3,12 +3,12 @@ import {
   EvaluationRejectedError,
   type AgentRuntime,
   type Capability,
-  type EconomyEvent,
   type Intent,
   type Job,
   type Plan,
   type ProofOfOutcome
 } from '../../domain/src/index.js';
+import type { EconomyEvent } from '../../events/src/index.js';
 
 export interface EvaluatorRuntime {
   identity: { id: string; name: string; identityRef: string; capabilities: string[]; mock: boolean };
