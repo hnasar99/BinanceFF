@@ -1,5 +1,5 @@
 import { researchAgent, riskAgent, evaluatorAgent } from '../../../agents/mock-agents/src/index.js';
-import type { Intent } from '../../../packages/domain/src/index.js';
+import type { EconomyEvent, Intent } from '../../../packages/domain/src/index.js';
 import { executeIntent } from '../../../packages/orchestrator/src/index.js';
 
 const intent: Intent = {
@@ -12,9 +12,16 @@ const intent: Intent = {
   status: 'received'
 };
 
+const events: EconomyEvent[] = [];
 const proof = await executeIntent(intent, {
   providers: [researchAgent, riskAgent],
-  evaluator: evaluatorAgent
+  evaluator: evaluatorAgent,
+  emit(event) {
+    events.push(event);
+    console.log(`[${event.type}]`, JSON.stringify(event.payload));
+  }
 });
 
+console.log('\n--- PROOF OF OUTCOME ---');
 console.log(JSON.stringify(proof, null, 2));
+console.log(`\nEvents emitted: ${events.length}`);
